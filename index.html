@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sumit Shejole — Deep Sea Portfolio</title>
+<meta name="description" content="Sumit Shejole — CSBS Engineering Student, Web Developer & Lifetime Learner"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<div id="loader">
+  <div class="loader-logo">SUMIT<em>.</em>DEV</div>
+  <div class="loader-sub">Initialising deep sea environment</div>
+  <div class="loader-bar-wrap"><div id="loader-bar"></div></div>
+  <div class="loader-pct" id="loader-pct">0%</div>
+</div>
+
+
+<div id="progress-line"></div>
+
+<div id="depth-meter">
+  <div class="dm-label">Depth</div>
+  <div id="depth-bar-wrap"><div id="depth-bar"></div></div>
+  <div id="depth-val">0m</div>
+</div>
+
+<nav id="main-nav">
+  <div class="nav-logo">SUMIT<em>.</em>DEV</div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="scrollToSection(0)">Surface</a></li>
+    <li><a href="#" onclick="scrollToSection(0.27)">Skills</a></li>
+    <li><a href="#" onclick="scrollToSection(0.51)">Projects</a></li>
+    <li><a href="#" onclick="scrollToSection(0.70)">Timeline</a></li>
+    <li><a href="#" onclick="scrollToSection(0.95)">Contact</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE FULL-SCREEN NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#" onclick="mobileNavTo(0)">Surface</a>
+  <a href="#" onclick="mobileNavTo(0.27)">Skills</a>
+  <a href="#" onclick="mobileNavTo(0.51)">Projects</a>
+  <a href="#" onclick="mobileNavTo(0.70)">Timeline</a>
+  <a href="#" onclick="mobileNavTo(0.95)">Contact</a>
+  <div class="mobile-nav-footer">SUMIT · SHEJOLE</div>
+</div>
+
+<canvas id="three-canvas"></canvas>
+
+<div class="section-panel" id="sec-hero">
+  <div class="hero-eyebrow">CSBS Engineering Student</div>
+  <h1 class="hero-name">Sumit<br><span class="accent">Shejole</span></h1>
+  <p class="hero-role">Web Developer &nbsp;·&nbsp; Lifetime Learner &nbsp;·&nbsp; Problem Solver</p>
+  <p class="hero-tagline">Building the web, one wave at a time.</p>
+  <div class="hero-ctas" id="hero-ctas">
+    <button class="btn btn-primary" onclick="scrollToSection(0.51)">View Projects</button>
+    <a href="resume.pdf" class="btn btn-glass" target="_blank">Download Resume</a>
+    <button class="btn btn-glass" onclick="scrollToSection(0.95)">Contact Me</button>
+  </div>
+  <div class="scroll-hint-wrap" id="scroll-hint">
+    <div class="scroll-hint-txt">Scroll to dive</div>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<div class="phase-text" id="phase-dive">Descending into the deep</div>
+<div class="phase-text" id="phase-deep">Deeper still…</div>
+
+
+<div class="section-panel" id="sec-skills">
+  <div class="skills-header">
+    <div class="sec-label">What I Know</div>
+    <h2 class="sec-title">Technical <em>Skills</em></h2>
+  </div>
+  <div class="skills-grid" id="skills-grid"></div>
+</div>
+
+
+<div class="section-panel" id="sec-projects">
+  <div class="projects-header">
+    <div class="sec-label">What I've Built</div>
+    <h2 class="sec-title">Featured <em>Projects</em></h2>
+  </div>
+  <div class="project-cards" id="project-cards"></div>
+</div>
+
+
+<div class="section-panel" id="sec-timeline">
+  <div class="timeline-header">
+    <div class="sec-label">My Journey</div>
+    <h2 class="sec-title">Education &amp;<br><em>Experience</em></h2>
+  </div>
+  <div class="timeline" id="timeline"></div>
+</div>
+
+
+<div class="section-panel" id="sec-kraken">
+  <div class="kraken-eyebrow">Flagship Achievement</div>
+  <h2 class="kraken-title">Coding <span class="highlight">Protocol</span></h2>
+  <p class="kraken-sub">A full-stack internship & placement platform with dual-dashboard architecture — connecting students to opportunities with real-time data powered by Firebase.</p>
+  <div class="kraken-stats">
+    <div class="k-stat"><div class="k-stat-num">2</div><div class="k-stat-lbl">Dashboards</div></div>
+    <div class="k-stat"><div class="k-stat-num">4</div><div class="k-stat-lbl">Core Tech</div></div>
+    <div class="k-stat"><div class="k-stat-num">∞</div><div class="k-stat-lbl">Ambition</div></div>
+  </div>
+  <div class="kraken-cta">
+    <a href="https://coding-protocol-edf72.web.app/" target="_blank" class="btn btn-primary">Live Demo</a>
+    <a href="https://github.com/shejolesumesh/coding-protocol" target="_blank" class="btn btn-glass">View Source</a>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section-panel" id="sec-contact">
+  <div class="contact-header">
+    <div class="sec-label">Let's Connect</div>
+    <h2 class="sec-title">Get In <em>Touch</em></h2>
+  </div>
+  <div class="contact-grid" id="contact-grid"></div>
+  <div class="contact-footer" id="contact-footer">
+    Crafted with <span>Three.js + GSAP</span> · Sumit Shejole © 2025
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close">&times;</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<!-- SCROLL CONTAINER -->
+<div id="scroll-container"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
