@@ -35,11 +35,3 @@ A cinematic, scroll-driven 3D interactive developer portfolio built to showcase 
 * `style.css`: Contains the design system, CSS variables, glassmorphism effects, and responsive media queries.
 * `script.js`: The powerhouse of the application. Handles Three.js scene setup, procedural generation, GLSL shaders, GSAP timelines, and device performance tiering.
 * `sumit-shejole-resume.pdf`: Downloadable copy of my professional resume.
-
-## 💻 Local Setup
-
-Since this project relies on WebGL and external textures/assets, it must be run on a local server to prevent CORS issues.
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/shejolesumesh/sumit-portfolio3d.git](https://github.com/shejolesumesh/sumit-portfolio3d.git)
