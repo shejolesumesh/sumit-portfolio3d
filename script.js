@@ -58,7 +58,7 @@ const CONTACTS = [
   {icon:'📞',label:'Phone',val:'+91 88275 03016',href:'tel:8827503016'},
   {icon:'💻',label:'GitHub',val:'github.com/shejolesumesh',href:'https://github.com/shejolesumesh',target:'_blank'},
   {icon:'🔗',label:'LinkedIn',val:'linkedin.com/in/sumit-shejole',href:'https://www.linkedin.com/in/sumit-shejole',target:'_blank'},
-  {icon:'💬',label:'WhatsApp',val:'Chat with me',href:'https://wa.me/+918827503016',target:'_blank'},
+  {icon:'💬',label:'WhatsApp',val:'Chat with me',href:'https://wa.me/ +91 8827503016',target:'_blank'},
 ];
 
 
