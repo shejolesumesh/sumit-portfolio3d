@@ -1,4 +1,4 @@
-# 🌊 Deep Sea Portfolio
+ Portfolio
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -9,11 +9,11 @@
 
 A cinematic, scroll-driven 3D interactive developer portfolio built to showcase my technical skills, projects, and educational journey. Designed as an ocean descent metaphor, the experience takes users from the vibrant surface down to the bioluminescent deep sea.
 
-### 🚀 [View Live Demo](https://shejolesumesh.github.io/sumit-portfolio3d/)
+ [View Live Demo](https://shejolesumesh.github.io/sumit-portfolio3d/)
 
 ---
 
-## ✨ Key Features
+ Key Features
 
 * **Scroll-Driven 3D Experience:** The camera descends through a fully realized 3D underwater environment synced to the user's scroll using GSAP's ScrollTrigger.
 * **Custom GLSL Shaders:** Features custom vertex and fragment shaders to simulate dynamic ocean waves and bioluminescent floating particles.
@@ -22,14 +22,14 @@ A cinematic, scroll-driven 3D interactive developer portfolio built to showcase 
 * **Interactive UI Overlays:** A sleek, glassmorphism-inspired UI provides details about skills, featured projects, and a professional timeline without breaking the 3D immersion.
 * **Dynamic Depth Meter:** A custom UI depth gauge tracks your descent progress in real time.
 
-## 🛠️ Technologies Used
+ Technologies Used
 
 * **Core:** HTML5, CSS3, JavaScript (ES6+)
 * **3D Rendering Engine:** [Three.js](https://threejs.org/) (r128)
 * **Animation & Scroll Sync:** [GSAP](https://greensock.com/gsap/) (3.12.2) & ScrollTrigger
 * **Graphics:** WebGL & Custom GLSL Shaders
 
-## 📂 Project Structure
+ Project Structure
 
 * `index.html`: The core markup, UI overlays, and layout structure.
 * `style.css`: Contains the design system, CSS variables, glassmorphism effects, and responsive media queries.
