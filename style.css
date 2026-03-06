@@ -1,6 +1,4 @@
-/* ══════════════════════════════════════════════
-   RESET & TOKENS
-══════════════════════════════════════════════ */
+
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --surface:#8ecde6;
@@ -26,9 +24,7 @@ body{
 }
 a{color:inherit;text-decoration:none;}
 
-/* ══════════════════════════════════════════════
-   LOADER
-══════════════════════════════════════════════ */
+
 #loader{
   position:fixed;inset:0;z-index:10000;background:var(--abyss);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
@@ -45,9 +41,7 @@ a{color:inherit;text-decoration:none;}
 .loader-pct{font-size:.65rem;letter-spacing:.3em;color:var(--text-dim);}
 .loader-sub{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(61,255,208,.4);}
 
-/* ══════════════════════════════════════════════
-   PROGRESS & DEPTH METER
-══════════════════════════════════════════════ */
+
 #progress-line{
   position:fixed;top:0;left:0;height:2px;width:0;
   background:linear-gradient(90deg,var(--accent),var(--accent2));z-index:500;
@@ -63,18 +57,14 @@ a{color:inherit;text-decoration:none;}
 #depth-bar{width:100%;height:0;background:linear-gradient(to bottom,var(--accent),#0af);border-radius:2px;}
 #depth-val{font-size:.55rem;letter-spacing:.1em;color:var(--accent);font-variant-numeric:tabular-nums;}
 
-/* ══════════════════════════════════════════════
-   CANVAS
-══════════════════════════════════════════════ */
+
 #three-canvas{
   position:fixed;top:0;left:0;width:100%;height:100%;
   z-index:0;display:block;
   will-change:transform;transform:translateZ(0);
 }
 
-/* ══════════════════════════════════════════════
-   NAV
-══════════════════════════════════════════════ */
+
 #main-nav{
   position:fixed;top:0;left:0;right:0;height:var(--nav-h);
   display:flex;align-items:center;justify-content:space-between;
@@ -102,40 +92,21 @@ a{color:inherit;text-decoration:none;}
 .nav-links a:hover{color:var(--accent);}
 .nav-links a:hover::after{width:100%;}
 
-/* ══════════════════════════════════════════════
-   SCROLL CONTAINER
-══════════════════════════════════════════════ */
+
 #scroll-container{height:700vh;position:relative;z-index:1;}
 
-/* ══════════════════════════════════════════════
-   SECTION PANELS  —  architecture rules
-   ─────────────────────────────────────────────
-   1. overflow:hidden — NEVER overflow-y:auto.
-      Any scrollable fixed element lets the mobile
-      OS intercept touch before pointer-events is
-      evaluated → wrong taps.  It also steals
-      window.scroll → GSAP ScrollTrigger stops.
 
-   2. Tall sections (skills/projects/timeline) use
-      justify-content:flex-start so content anchors
-      to the TOP.  With overflow:hidden + center,
-      an overflowing section clips the TOP half
-      above the viewport — invisible + untappable.
-
-   3. Pointer-events: one rule only — pe-active.
-      No !important overrides fighting against it.
-══════════════════════════════════════════════ */
 .section-panel{
   position:fixed;inset:0;z-index:10;
   display:flex;align-items:center;justify-content:center;
   pointer-events:none;opacity:0;
   overflow:hidden;
 }
-/* Single source of truth for interactivity */
+
 .section-panel.pe-active{pointer-events:auto;}
 .section-panel.pe-active *{pointer-events:auto;}
 
-/* ══ HERO ══════════════════════════════════════ */
+
 #sec-hero{
   flex-direction:column;align-items:center;
   text-align:center;justify-content:center;
@@ -161,7 +132,7 @@ a{color:inherit;text-decoration:none;}
   font-size:clamp(1rem,2vw,1.35rem);color:rgba(255,255,255,.55);
   margin-top:12px;letter-spacing:.08em;opacity:0;
 }
-/* opacity starts at 0, GSAP animates it in — pointer-events handled by pe-active * */
+
 .hero-ctas{display:flex;gap:14px;margin-top:44px;justify-content:center;flex-wrap:wrap;opacity:0;}
 .scroll-hint-wrap{
   position:absolute;bottom:48px;left:50%;transform:translateX(-50%);
@@ -170,7 +141,7 @@ a{color:inherit;text-decoration:none;}
 .scroll-hint-txt{font-size:.55rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.35);}
 .scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);}
 
-/* ── Buttons ─────────────────────────────────── */
+
 .btn{
   font-family:var(--font-body);font-size:.68rem;letter-spacing:.22em;
   text-transform:uppercase;border:none;cursor:pointer;
@@ -183,12 +154,12 @@ a{color:inherit;text-decoration:none;}
 @media(min-width:769px){.btn-glass{backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}}
 .btn-glass:hover{background:rgba(61,255,208,.15);border-color:var(--accent);}
 
-/* ── Section title shared ────────────────────── */
+
 .sec-label{font-size:.58rem;letter-spacing:.4em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
 .sec-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.8rem);font-weight:300;letter-spacing:.1em;color:#fff;line-height:1.1;}
 .sec-title em{color:var(--accent);font-style:normal;}
 
-/* ══ SKILLS ════════════════════════════════════ */
+
 #sec-skills{
   flex-direction:column;align-items:flex-start;
   justify-content:flex-start;
@@ -218,7 +189,7 @@ a{color:inherit;text-decoration:none;}
 .skill-bar-wrap{height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;}
 .skill-bar{height:100%;background:linear-gradient(90deg,var(--accent),#0af);border-radius:2px;width:0;transition:width 1s cubic-bezier(.25,.46,.45,.94);transform:translateZ(0);}
 
-/* ══ PROJECTS ══════════════════════════════════ */
+
 #sec-projects{
   flex-direction:column;align-items:flex-start;
   justify-content:flex-start;
@@ -249,7 +220,7 @@ a{color:inherit;text-decoration:none;}
 .proj-link.primary{background:rgba(61,255,208,.1);border-color:rgba(61,255,208,.4);color:var(--accent);}
 .proj-impact{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07);font-size:.65rem;color:rgba(61,255,208,.7);letter-spacing:.08em;}
 
-/* ══ TIMELINE ══════════════════════════════════ */
+
 #sec-timeline{
   flex-direction:column;align-items:flex-start;
   justify-content:flex-start;
@@ -266,7 +237,7 @@ a{color:inherit;text-decoration:none;}
 .tl-desc{font-size:.72rem;color:rgba(232,244,248,.45);margin-top:8px;line-height:1.7;}
 .tl-badge{display:inline-block;font-size:.52rem;letter-spacing:.15em;text-transform:uppercase;padding:3px 10px;border-radius:20px;border:1px solid rgba(240,192,96,.3);color:var(--gold);margin-top:8px;}
 
-/* ══ KRAKEN / FLAGSHIP ═════════════════════════ */
+
 #sec-kraken{
   flex-direction:column;align-items:center;
   justify-content:center;
@@ -284,7 +255,7 @@ a{color:inherit;text-decoration:none;}
 .kraken-cta{margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:1!important;visibility:visible!important;}
 .kraken-cta .btn{opacity:1!important;visibility:visible!important;display:inline-block!important;}
 
-/* ══ CONTACT ═══════════════════════════════════ */
+
 #sec-contact{
   flex-direction:column;align-items:center;
   justify-content:center;
@@ -311,17 +282,12 @@ a{color:inherit;text-decoration:none;}
 .contact-footer{margin-top:28px;font-size:.65rem;letter-spacing:.15em;color:rgba(232,244,248,.25);opacity:0;}
 .contact-footer span{color:var(--accent);}
 
-/* ══ PHASE TEXT ════════════════════════════════ */
+
 .phase-text{position:fixed;z-index:12;pointer-events:none;opacity:0;font-family:var(--font-display);text-transform:uppercase;letter-spacing:.2em;text-shadow:0 0 40px rgba(61,255,208,.4);}
 #phase-dive{top:44%;left:50%;transform:translateX(-50%);font-size:clamp(1.4rem,4vw,3rem);font-weight:300;color:var(--accent);white-space:nowrap;}
 #phase-deep{top:50%;left:50%;transform:translate(-50%,-50%);font-size:clamp(1rem,2.5vw,2rem);font-weight:300;color:var(--text-dim);}
 
-/* ══════════════════════════════════════════════
-   MODAL
-   overflow-y:auto here is safe — modal is z-index
-   5000, above all fixed panels, so it doesn't
-   interfere with mobile scroll interception.
-══════════════════════════════════════════════ */
+
 #modal-overlay{
   position:fixed;inset:0;z-index:5000;
   background:rgba(1,5,12,.9);
@@ -354,31 +320,25 @@ a{color:inherit;text-decoration:none;}
 .modal-link.gh{border:1px solid var(--glass-border);color:var(--text);background:var(--glass);}
 .modal-link.gh:hover{border-color:var(--accent);}
 
-/* ══════════════════════════════════════════════
-   SCROLLBAR
-══════════════════════════════════════════════ */
+
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:var(--abyss);}
 ::-webkit-scrollbar-thumb{background:rgba(61,255,208,.3);border-radius:4px;}
 
-/* ══════════════════════════════════════════════
-   MOBILE  ≤ 768px
-   All content sized to fit in viewport so
-   overflow:hidden never clips anything.
-══════════════════════════════════════════════ */
+
 @media(max-width:768px){
 
   #main-nav{padding:0 20px;}
   .nav-links{display:none;}
   #depth-meter{right:10px;}
 
-  /* Content sections: tighter padding */
+  
   #sec-skills,#sec-projects,#sec-timeline{
     padding:calc(var(--nav-h) + 10px) 5vw 12px;
   }
   #sec-kraken,#sec-contact{
     padding:calc(var(--nav-h) + 10px) 5vw 12px;
-    justify-content:flex-start;   /* avoid centering clipping on small phones */
+    justify-content:flex-start;   
   }
   #sec-hero{padding:var(--nav-h) 20px 16px;}
 
@@ -387,25 +347,24 @@ a{color:inherit;text-decoration:none;}
   .skills-header,.projects-header,.timeline-header,.contact-header{margin-bottom:14px;}
   .sec-label{margin-bottom:6px;}
 
-  /* ── Hero ── */
+
   .hero-eyebrow{font-size:.55rem;letter-spacing:.3em;margin-bottom:10px;}
   .hero-name{font-size:clamp(2rem,10vw,3.8rem);}
   .hero-role{font-size:.68rem;letter-spacing:.18em;margin-top:10px;}
   .hero-tagline{font-size:.82rem;margin-top:6px;}
-  /* Column layout: 3 buttons stacked, NEVER wraps to 2nd row.
-     overflow:hidden would clip any wrapped row silently. */
+  
   .hero-ctas{
     flex-direction:column;align-items:center;
     gap:10px;margin-top:20px;width:100%;
   }
   .hero-ctas .btn{
-    width:min(280px,90vw);   /* 90vw guards against overflow on 320px phones */
+    width:min(280px,90vw);   
     text-align:center;
     padding:13px 16px;font-size:.6rem;letter-spacing:.16em;
   }
   .scroll-hint-wrap{display:none;}
 
-  /* ── Skills: 3-col compact grid ── */
+  
   .skills-grid{grid-template-columns:repeat(3,1fr);gap:8px;max-width:100%;}
   .skill-node{padding:10px 8px;}
   .skill-icon{font-size:1.1rem;margin-bottom:5px;}
@@ -413,7 +372,7 @@ a{color:inherit;text-decoration:none;}
   .skill-level{font-size:.42rem;margin-bottom:6px;letter-spacing:.08em;}
   .skill-tooltip{display:none;}
 
-  /* ── Projects ── */
+  
   .project-cards{gap:12px;}
   .proj-card{padding:16px 14px;}
   .proj-title{font-size:1.2rem;margin-bottom:6px;}
@@ -424,7 +383,7 @@ a{color:inherit;text-decoration:none;}
   .proj-link{padding:8px 12px;font-size:.55rem;letter-spacing:.12em;}
   .proj-impact{font-size:.58rem;margin-top:10px;padding-top:10px;}
 
-  /* ── Timeline ── */
+  
   .timeline{max-width:100%;}
   .timeline-header{margin-bottom:12px;}
   .tl-item{gap:14px;padding-bottom:16px;}
@@ -433,7 +392,7 @@ a{color:inherit;text-decoration:none;}
   .tl-desc{font-size:.62rem;line-height:1.5;margin-top:4px;}
   .tl-badge{font-size:.46rem;padding:2px 8px;margin-top:5px;}
 
-  /* ── Kraken ── */
+  
   .kraken-eyebrow{font-size:.5rem;margin-bottom:10px;}
   .kraken-title{font-size:clamp(1.5rem,7vw,2.6rem);}
   .kraken-sub{font-size:.72rem;line-height:1.6;margin-top:10px;}
@@ -442,7 +401,7 @@ a{color:inherit;text-decoration:none;}
   .k-stat-lbl{font-size:.5rem;}
   .kraken-cta{margin-top:18px;gap:10px;}
 
-  /* ── Contact ── */
+  
   .contact-header{margin-bottom:16px;}
   .contact-grid{grid-template-columns:1fr;gap:8px;max-width:100%;}
   .contact-card{padding:12px 14px;gap:12px;}
@@ -451,13 +410,13 @@ a{color:inherit;text-decoration:none;}
   .cc-val{font-size:.62rem;}
   .contact-footer{margin-top:14px;font-size:.56rem;}
 
-  /* ── Modal ── */
+
   .modal-box{padding:24px 18px;}
   .modal-title{font-size:1.6rem;}
   .modal-section p,.modal-section li{font-size:.75rem;}
 }
 
-/* ══ iPhone SE and similarly tiny screens ══════ */
+
 @media(max-width:390px){
   .skills-grid{grid-template-columns:repeat(2,1fr);}
   .hero-name{font-size:1.9rem;}

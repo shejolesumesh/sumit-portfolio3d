@@ -63,24 +63,24 @@ const CONTACTS = [
 
 
 const isMobile = innerWidth < 768 || /Mobi|Android/i.test(navigator.userAgent);
-const deviceMem = navigator.deviceMemory || 4;        // RAM in GB (4 if not supported)
+const deviceMem = navigator.deviceMemory || 4;        
 const cpuCores  = navigator.hardwareConcurrency || 4;
 const isLowEnd  = isMobile && (deviceMem <= 2 || cpuCores <= 4);
 const TIER = isLowEnd ? 'low' : (isMobile ? 'mid' : 'high');
 
-// All quality knobs in one object — easy to retune
+
 const Q = {
-  pc   : {high:2500, mid:700,  low:250 }[TIER],  // mid-water particle count
-  fc   : {high:700,  mid:200,  low:80  }[TIER],  // floor spore count
+  pc   : {high:2500, mid:700,  low:250 }[TIER],  
+  fc   : {high:700,  mid:200,  low:80  }[TIER],  
   coral: {high:28,   mid:12,   low:5   }[TIER],
   jelly: {high:8,    mid:4,    low:2   }[TIER],
   rocks: {high:14,   mid:6,    low:3   }[TIER],
-  wSeg : {high:64,   mid:28,   low:14  }[TIER],  // wave plane subdivisions
-  sSeg : {high:48,   mid:22,   low:10  }[TIER],  // sand plane subdivisions
+  wSeg : {high:64,   mid:28,   low:14  }[TIER],  
+  sSeg : {high:48,   mid:22,   low:10  }[TIER],  
   dpr  : {high:Math.min(devicePixelRatio,1.5), mid:1, low:1}[TIER],
   aa   : {high:true, mid:false,low:false}[TIER],
   fps  : {high:60,   mid:60,   low:30  }[TIER],
-  // Sky sphere is radius 450 — far plane MUST exceed that or the top gets clipped (black dome bug)
+  
   far  : {high:600,  mid:520,  low:480 }[TIER],
 };
 
@@ -214,7 +214,7 @@ const renderer=new THREE.WebGLRenderer({
 renderer.setPixelRatio(Q.dpr);
 renderer.setSize(innerWidth,innerHeight);
 renderer.setClearColor(0x020810,1);
-renderer.shadowMap.enabled=false; // OFF — major GPU savings
+renderer.shadowMap.enabled=false; 
 
 const scn=new THREE.Scene();
 scn.fog=new THREE.FogExp2(0x0a2a4a,0.032);
@@ -255,14 +255,14 @@ scn.add(new THREE.Mesh(new THREE.SphereGeometry(450,TIER==='low'?14:22,10),skyMa
 
 
 const PC=Q.pc;
-const pPos=new Float32Array(PC*3);  // STATIC base positions (uploaded once)
+const pPos=new Float32Array(PC*3);  
 const pCol=new Float32Array(PC*3);
 const pSpd=new Float32Array(PC);
 const pOff=new Float32Array(PC);
 const pPal=[0x3dffd0,0x00aaff,0x7b5ea7,0x00ffaa,0x0af4ff].map(h=>new THREE.Color(h));
 for(let i=0;i<PC;i++){
   pPos[i*3  ]=(Math.random()-.5)*70;
-  pPos[i*3+1]=(Math.random()-.5)*45-22;  // stored as static base Y
+  pPos[i*3+1]=(Math.random()-.5)*45-22;  
   pPos[i*3+2]=(Math.random()-.5)*70;
   const c=pPal[i%pPal.length];
   pCol[i*3]=c.r; pCol[i*3+1]=c.g; pCol[i*3+2]=c.b;
@@ -402,7 +402,7 @@ const fpOf=new Float32Array(FC);
 const fpal=[0x00ffe0,0x4af0c4,0x9b5de5,0xff4fbe,0x0af4ff].map(h=>new THREE.Color(h));
 for(let i=0;i<FC;i++){
   fpPo[i*3  ]=(Math.random()-.5)*50;
-  fpPo[i*3+1]=Math.random()*4;         // static base Y in [0,4]
+  fpPo[i*3+1]=Math.random()*4;         
   fpPo[i*3+2]=(Math.random()-.5)*50;
   const c=fpal[i%fpal.length];
   fpC[i*3]=c.r; fpC[i*3+1]=c.g; fpC[i*3+2]=c.b;
@@ -550,7 +550,7 @@ let scrollProg=0;
 const masterTL=gsap.timeline({
   scrollTrigger:{
     trigger:'#scroll-container',start:'top top',end:'bottom bottom',
-    scrub:isMobile?1:1.5,          // tighter scrub on mobile = more responsive
+    scrub:isMobile?1:1.5,          
     onUpdate(self){
       scrollProg=self.progress;
       updateUI(self.progress);
@@ -571,7 +571,7 @@ masterTL.to(scn.fog.color,{r:.01,g:.03,b:.06,duration:.3,ease:'power2.in'},.12);
 masterTL.to(scn.fog,{density:.065,duration:.3,ease:'none'},.12);
 masterTL.to(skyMat.uniforms.uP,{value:1,duration:.2,ease:'power2.in'},.08);
 
-// Tween the uniform VALUE object directly — GSAP handles nested objects fine!
+
 masterTL.to(pMat.uniforms.uOpacity,{value:.9,duration:.2,ease:'power2.out'},.18);
 masterTL.to(pMat.uniforms.uOpacity,{value:.3,duration:.2,ease:'power1.in'},.72);
 
@@ -632,7 +632,7 @@ function animateTimeline(){
   });
 }
 function animateKraken(){
-  // CSS handles pointer-events via pe-active; just ensure no inline styles override
+  
   document.querySelectorAll('.k-stat-num,.kraken-cta,.kraken-cta .btn').forEach(el=>{
     el.style.removeProperty('opacity');
     el.style.removeProperty('visibility');
