@@ -616,18 +616,15 @@ updateSections(0);
 
 
 function animateSkills(){
-  gsap.to('#sec-skills',{opacity:1});
   document.querySelectorAll('.skill-node').forEach((el,i)=>{
     gsap.to(el,{opacity:1,y:0,duration:.5,delay:i*.06,ease:'power2.out'});
     setTimeout(()=>{el.querySelector('.skill-bar').style.width=el.dataset.pct+'%';},400+i*60);
   });
-  document.getElementById('sec-skills').classList.add('active');
 }
 function animateProjects(){
   document.querySelectorAll('.proj-card').forEach((el,i)=>{
     gsap.to(el,{opacity:1,x:0,duration:.55,delay:i*.12,ease:'power2.out'});
   });
-  document.getElementById('sec-projects').classList.add('active');
 }
 function animateTimeline(){
   document.querySelectorAll('.tl-item').forEach((el,i)=>{
@@ -635,9 +632,11 @@ function animateTimeline(){
   });
 }
 function animateKraken(){
-  document.getElementById('sec-kraken').classList.add('active');
+  // CSS handles pointer-events via pe-active; just ensure no inline styles override
   document.querySelectorAll('.k-stat-num,.kraken-cta,.kraken-cta .btn').forEach(el=>{
-    el.style.opacity=''; el.style.visibility=''; el.style.transform='';
+    el.style.removeProperty('opacity');
+    el.style.removeProperty('visibility');
+    el.style.removeProperty('transform');
   });
 }
 function animateContact(){
@@ -645,7 +644,6 @@ function animateContact(){
     gsap.to(el,{opacity:1,y:0,duration:.45,delay:i*.08,ease:'power2.out'});
   });
   gsap.to('#contact-footer',{opacity:1,duration:.6,delay:.5});
-  document.getElementById('sec-contact').classList.add('active');
 }
 
 
@@ -668,8 +666,7 @@ setTimeout(()=>{
   gsap.to('.hero-name',{opacity:1,y:0,duration:1.1,ease:'power2.out',delay:.5});
   gsap.to('.hero-role',{opacity:1,duration:.8,delay:1.0,ease:'power2.out'});
   gsap.to('.hero-tagline',{opacity:1,duration:.8,delay:1.2,ease:'power2.out'});
-  gsap.to('#hero-ctas',{opacity:1,duration:.8,delay:1.5,ease:'power2.out',
-    onComplete:()=>document.getElementById('hero-ctas').classList.add('active')});
+  gsap.to('#hero-ctas',{opacity:1,duration:.8,delay:1.5,ease:'power2.out'});
   gsap.to('#scroll-hint',{opacity:1,duration:.8,delay:2.2,ease:'power2.out'});
   document.getElementById('sec-hero').style.opacity=1;
 },800);
