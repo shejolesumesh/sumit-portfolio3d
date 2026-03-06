@@ -1,4 +1,3 @@
-
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --surface:#8ecde6;
@@ -111,21 +110,28 @@ a{color:inherit;text-decoration:none;}
 #scroll-container{height:700vh;position:relative;z-index:1;}
 
 
+
 .section-panel{
   position:fixed;inset:0;z-index:10;
   display:flex;align-items:center;justify-content:center;
   pointer-events:none;opacity:0;
   will-change:opacity;
-  /* Allow inner content to scroll if it overflows the viewport height */
-  overflow-y:auto;
-  overflow-x:hidden;
-  /* Push content below fixed nav */
+  /* CRITICAL FIX: overflow:hidden when inactive so invisible panels
+     don't intercept touch events on mobile (causes wrong element taps) */
+  overflow:hidden;
+  touch-action:none;
   padding-top:var(--nav-h);
   padding-bottom:20px;
 }
 
-
-.section-panel.pe-active{pointer-events:auto;}
+/* Only the ACTIVE panel becomes scrollable + touchable */
+.section-panel.pe-active{
+  pointer-events:auto;
+  overflow-y:auto;
+  overflow-x:hidden;
+  touch-action:pan-y;
+  -webkit-overflow-scrolling:touch;
+}
 .section-panel.pe-active *{pointer-events:auto;}
 /* Hero CTAs start inert until GSAP adds .active */
 .hero-ctas:not(.active){pointer-events:none!important;}
