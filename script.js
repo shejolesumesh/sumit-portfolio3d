@@ -1,4 +1,3 @@
-
 const SKILLS = [
   {icon:'⚙️', name:'C / C++',          level:'Proficient',    pct:80, desc:'Systems programming & DSA'},
   {icon:'🐍', name:'Python',            level:'Proficient',    pct:82, desc:'Scripting, automation & data'},
