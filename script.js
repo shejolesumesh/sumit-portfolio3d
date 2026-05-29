@@ -59,6 +59,7 @@ const CONTACTS = [
   {icon:'💻',label:'GitHub',val:'github.com/shejolesumesh',href:'https://github.com/shejolesumesh',target:'_blank'},
   {icon:'🔗',label:'LinkedIn',val:'linkedin.com/in/sumit-shejole',href:'https://www.linkedin.com/in/sumit-shejole',target:'_blank'},
   {icon:'💬',label:'WhatsApp',val:'Chat with me',href:'https://wa.me/918827503016?text=Hello%20Sumit',target:'_blank'},
+  {icon:'🧩',label:'LeetCode',val:'leetcode.com/Sumit_shejole',href:'https://leetcode.com/u/sumit_shejole/',target:'_blank'},
 ];
 
 
